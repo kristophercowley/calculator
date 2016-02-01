@@ -16,6 +16,30 @@
 
 <body ng-controller="MainController as mc">
 	{{1+1}}{{mc.test}}
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8">
+				<button ng-class="{active:}" ng-click="page('home')">Home</button>
+				<button ng-class="{active:}" ng-click="page('notHome')">Home</button>
+				<button ng-class="{active:}" ng-click="page('calc')">Home</button>
+			</div>
+		</div>
+	</div>
+	<div ng-show="home">
+		<div>
+			
+		</div>
+	</div>
+	<div ng-show="notHome">
+		<div>
+			
+		</div>
+	</div>
+	<div ng-show="calc">
+		<div>
+			
+		</div>
+	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
