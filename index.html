@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Calculator</title>
+	<meta name="viewport" content="initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="assets/styles/style.css" />
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
@@ -18,28 +19,130 @@
 	{{1+1}}{{mc.test}}
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-8">
-				<button ng-class="{active:}" ng-click="page('home')">Home</button>
-				<button ng-class="{active:}" ng-click="page('notHome')">Home</button>
-				<button ng-class="{active:}" ng-click="page('calc')">Home</button>
+			<div class="col-xs-12">
+				<button class="btn-xs" ng-class="{active: mc.view === mc.home}" ng-click="mc.activePage('home')">Temperature</button>
+				<button class="btn-xs" ng-class="{active: mc.view === mc.inch}" ng-click="mc.activePage('inch')">Inches/Feet</button>
+				<button class="btn-xs" ng-class="{active: mc.view === mc.mile}" ng-click="mc.activePage('mile')">Miles/Km</button>
+				<button class="btn-xs" ng-class="{active: mc.view === mc.kilo}" ng-click="mc.activePage('kilo')">LB/Kilo</button>
+				<button class="btn-xs" ng-class="{active: mc.view === mc.bmi}" ng-click="mc.activePage('bmi')">BMI</button>
+				<button class="btn-xs" ng-class="{active: mc.view === mc.bmi}" ng-click="mc.activePage('loans')">Loans and Payments</button>
 			</div>
 		</div>
 	</div>
-	<div ng-show="home">
+	
+	<!--Temperature View-->
+	<div ng-show="mc.view === 'home'">
 		<div>
-			
+			<h2>Calculate C to F</h2>
+			<input type="number" ng-model="mc.c" placeholder="Temp in C" />
+			<button ng-click="mc.celciusToF(mc.c)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.cToF}}</span>
+		</div>
+		<div>
+			<h2>Calculate F to C </h2>
+			<input type="number" ng-model="mc.f" placeholder="Temp in F" />
+			<button ng-click="mc.farToC(mc.f)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.fToC}}</span>
 		</div>
 	</div>
-	<div ng-show="notHome">
+	
+	<!--Feet and Inches View-->
+	<div ng-show="mc.view === 'inch'">
 		<div>
-			
+			<h2>Calculate Inches to Foot</h2>
+			<input type="number" ng-model="mc.miles" placeholder="Enter Miles" />
+			<button ng-click="mc.milesToKm(mc.miles)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.mToKm}}</span>
+		</div>
+		<div>
+			<h2>Calculate Foot to Inches</h2>
+			<input type="number" ng-model="mc.km" placeholder="Enter km" />
+			<button ng-click="mc.kmToM(mc.km)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.kmToM}}</span>
+		</div>
+		
+		<!--Miles and KM-->
+	</div>
+	<div ng-show="mc.view === 'mile'">
+		<div>
+			<h2>Calculate Miles to Km</h2>
+			<input type="number" ng-model="mc.miles" placeholder="Enter Miles" />
+			<button ng-click="mc.milesToKm(mc.miles)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.mToKm}}</span>
+		</div>
+		<div>
+			<h2>Calculate Km to Miles</h2>
+			<input type="number" ng-model="mc.km" placeholder="Enter km" />
+			<button ng-click="mc.kmToM(mc.km)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.kmToM}}</span>
 		</div>
 	</div>
-	<div ng-show="calc">
-		<div>
+	
+			<!--Pounds and Kilos View-->
 			
+			</div>
+	<div ng-show="mc.view === 'kilo'">
+		<div>
+			<h2>Calculate Pounds to Kilos</h2>
+			<input type="number" ng-model="mc.miles" placeholder="Enter Miles" />
+			<button ng-click="mc.milesToKm(mc.miles)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.mToKm}}</span>
+		</div>
+		<div>
+			<h2>Calculate Kilos to Pounds</h2>
+			<input type="number" ng-model="mc.km" placeholder="Enter km" />
+			<button ng-click="mc.kmToM(mc.km)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.kmToM}}</span>
 		</div>
 	</div>
+	
+	<!--BMI View-->
+	</div>
+	<div ng-show="mc.view === 'bmi'">
+		<div>
+			<h2>Calculate BMI</h2>
+			<input type="number" ng-model="mc.miles" placeholder="Enter Miles" />
+			<button ng-click="mc.milesToKm(mc.miles)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.mToKm}}</span>
+		</div>
+		<div>
+			<h2>Calculate BMI</h2>
+			<input type="number" ng-model="mc.km" placeholder="Enter km" />
+			<button ng-click="mc.kmToM(mc.km)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.kmToM}}</span>
+		</div>
+	</div>		
+			
+			<!--Loans and Payments View-->
+			</div>
+	<div ng-show="mc.view === 'loans'">
+		<div>
+			<h2>Loans and Payments</h2>
+			<input type="number" ng-model="mc.miles" placeholder="Enter Miles" />
+			<button ng-click="mc.milesToKm(mc.miles)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.mToKm}}</span>
+		</div>
+		<div>
+			<h2>Interest</h2>
+			<input type="number" ng-model="mc.km" placeholder="Enter km" />
+			<button ng-click="mc.kmToM(mc.km)" class="btn btn-primary">Enter</button>
+			<br/> Result:
+			<span>{{mc.kmToM}}</span>
+		</div>
+	</div>
+			
+			
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
